@@ -1,0 +1,43 @@
+{
+  "name": "prototype",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.12",
+    "@rushstack/eslint-patch": "^1.10.4",
+    "axios": "^1.7.7",
+    "date-fns": "^4.1.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "pinia": "^2.1.7",
+    "quasar": "^2.17.0",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.12.0",
+    "@quasar/vite-plugin": "^1.7.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.29.0",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "install-peers": "^1.0.4",
+    "prettier": "^3.2.5",
+    "sass": "^1.79.4",
+    "vite": "^5.3.1",
+    "vite-plugin-vue-devtools": "^7.3.1"
+  }
+}

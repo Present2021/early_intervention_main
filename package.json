@@ -1,0 +1,20 @@
+{
+  "name": "prototype",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@quasar/vite-plugin": "^1.8.1",
+    "husky": "^9.1.7",
+    "sass": "^1.32.12"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.13",
+    "quasar": "^2.17.4"
+  }
+}

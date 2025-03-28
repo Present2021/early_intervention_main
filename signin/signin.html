@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.83.1">
+
+    <title>Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="signin.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+
+
+    <main class="form-signin">
+        <nav class="navbar ">
+            <form class="container-fluid justify-content-end">
+                <button class="btn btn-sm" type="button" onclick="changeclass('normal')">民眾</button> |
+                <button class="btn btn-sm" type="button" onclick="changeclass('districtOffice')">區公所</button>|
+                <button class="btn btn-sm" type="button" onclick="changeclass('government')">社會局</button>
+            </form>
+        </nav>
+        <hr>
+        <form>
+            <svg id="normal" xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+            </svg>
+
+            <svg id="districtOffice" xmlns="http://www.w3.org/2000/svg" display="none"  width="64" height="64" fill="currentColor"
+                class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
+                <path
+                    d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z" />
+            </svg>
+
+
+            <svg id="government" xmlns="http://www.w3.org/2000/svg" display="none"  width="64" height="64" fill="currentColor" class="bi bi-bank2"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916zM12.375 6v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2M.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1z" />
+            </svg>
+
+            </br></br>
+
+
+
+            <h1 id="titleH1" class="h3 mb-3 fw-normal">民眾登入</h1>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        </form>
+
+
+    </main>
+
+
+
+
+
+
+</body>
+<footer>
+    <script src="./signin.js"></script>
+</footer>
+
+</html>

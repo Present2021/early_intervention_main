@@ -1,0 +1,64 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/deploy-frontend.yml'
+      - 'frontend/**'
+      - '!frontend/*.md'
+
+env:
+  BRANCH_NAME: main
+  PROJECT_PATH: '/home/ubuntu/projects/tainan-eci-allowance/tainan-eci-allowance-frontend'
+  SUB_FOLDER: frontend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+          SERVER_HOSTNAME: ${{ secrets.DEV_SERVER_HOSTNAME }}
+          SERVER_USER: ubuntu
+        run: |
+          mkdir -p ~/.ssh/
+          # put ssh key
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          # write ssh config
+          printf "Host server\n\tHostName ${SERVER_HOSTNAME}\n\tUser ${SERVER_USER}" >> ~/.ssh/config
+          # test ssh connection
+          ssh -tt -o StrictHostKeyChecking=no server "echo ssh successful"
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH_NAME }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.16
+
+      - name: Create Env File
+        run: |
+          echo "a=b" >> ${{ env.SUB_FOLDER }}/.env
+
+      - name: Build Frontend Distribution
+        run: |
+          cd ${{ env.SUB_FOLDER }}
+          npm ci
+          npm run build
+
+      - name: Deploy
+        run: |
+          rsync -hazvv ${{ env.SUB_FOLDER }}/dist/ server:/tmp/dist-${GITHUB_REPOSITORY_ID}-${GITHUB_SHA}-${{ env.SUB_FOLDER }}/
+
+          ssh server  -o 'RequestTTY=force' "
+            trash ${{ env.PROJECT_PATH }}/dist &&
+            mv /tmp/dist-${GITHUB_REPOSITORY_ID}-${GITHUB_SHA}-${{ env.SUB_FOLDER }}  ${{ env.PROJECT_PATH }}/dist &&
+            cd ${{ env.PROJECT_PATH }} &&
+            sudo docker compose restart
+          "
